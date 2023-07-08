@@ -16,42 +16,29 @@
   <meta name="author" content="Bomin Chuang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Overview Clarify the requirements 了解系統需求 Capacity Estimation 頻寬存儲估計 System APIs 系統API設計 High-level System Design 系統系統設計 Data Storage 數據存儲設計 Scalability 優化 Scalability  Step1: Clarify the requirements">
+    <meta name="description" content="Overview Steps Code Time Complexity Conclusion  Steps Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited. Extract a vertex from the queue and add its neighbo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="System Design - YouTube">
-<meta property="og:url" content="https://bominc0624.dev/2023/04/09/system-design-youtube/index.html">
+<meta property="og:title" content="Breadth-First Search (using Python)">
+<meta property="og:url" content="https://bominc0624.dev/2023/07/09/Breadth-First-Search/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Overview Clarify the requirements 了解系統需求 Capacity Estimation 頻寬存儲估計 System APIs 系統API設計 High-level System Design 系統系統設計 Data Storage 數據存儲設計 Scalability 優化 Scalability  Step1: Clarify the requirements">
+<meta property="og:description" content="Overview Steps Code Time Complexity Conclusion  Steps Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited. Extract a vertex from the queue and add its neighbo">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/6yHnqfO.png">
-<meta property="og:image" content="https://i.imgur.com/MYKbKk2.png">
-<meta property="og:image" content="https://i.imgur.com/c5IpqfV.png">
-<meta property="og:image" content="https://i.imgur.com/2k2ugpd.png">
-<meta property="og:image" content="https://i.imgur.com/u2qeGxA.png">
-<meta property="og:image" content="https://i.imgur.com/zx336yM.png">
-<meta property="og:image" content="https://i.imgur.com/Nbm5C9K.png">
-<meta property="og:image" content="https://i.imgur.com/mAuqcms.png">
-<meta property="og:image" content="https://i.imgur.com/LP4lUhv.png">
-<meta property="og:image" content="https://i.imgur.com/iDGdoNP.png">
-<meta property="og:image" content="https://i.imgur.com/k8KQ0vp.png">
-<meta property="og:image" content="https://i.imgur.com/4SO73cJ.png">
-<meta property="og:image" content="https://i.imgur.com/dULCFRN.png">
-<meta property="og:image" content="https://i.imgur.com/bZ2vUyu.png">
-<meta property="og:image" content="https://i.imgur.com/aDegcGf.png">
-<meta property="og:image" content="https://i.imgur.com/RUupduh.png">
-<meta property="og:image" content="https://i.imgur.com/AHZpjio.png">
-<meta property="og:image" content="https://i.imgur.com/rmKp5Ki.png">
-<meta property="og:image" content="https://i.imgur.com/202Ecg5.png">
-<meta property="article:published_time" content="2023-04-09T14:12:14.000Z">
-<meta property="article:modified_time" content="2023-04-09T14:16:23.213Z">
+<meta property="og:image" content="https://imgur.com/6xAY9FT.jpg">
+<meta property="og:image" content="https://imgur.com/bAZPV8V.jpg">
+<meta property="og:image" content="https://imgur.com/AjHasA5.jpg">
+<meta property="og:image" content="https://imgur.com/7qwO4cC.jpg">
+<meta property="og:image" content="https://imgur.com/VepENhs.jpg">
+<meta property="og:image" content="https://imgur.com/0QcY0wt.jpg">
+<meta property="article:published_time" content="2023-07-08T20:23:53.000Z">
+<meta property="article:modified_time" content="2023-07-08T20:37:22.634Z">
 <meta property="article:author" content="Bomin Chuang">
-<meta property="article:tag" content="system design">
+<meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.imgur.com/6yHnqfO.png">
+<meta name="twitter:image" content="https://imgur.com/6xAY9FT.jpg">
   
   
   
-  <title>System Design - YouTube - Hexo</title>
+  <title>Breadth-First Search (using Python) - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +192,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="System Design - YouTube"></span>
+            <span id="subtitle" data-typed-text="Breadth-First Search (using Python)"></span>
           
         </div>
 
@@ -216,8 +203,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-09 23:12" pubdate>
-          2023年4月9日 晚上
+        <time datetime="2023-07-09 05:23" pubdate>
+          2023年7月9日 凌晨
         </time>
       </span>
     
@@ -228,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k words
+          2.3k words
         
       </span>
     
@@ -239,7 +226,7 @@
         
         
         
-          19 mins
+          20 mins
         
       </span>
     
@@ -277,106 +264,41 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">System Design - YouTube</h1>
+            <h1 style="display: none">Breadth-First Search (using Python)</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ol>
-<li>Clarify the requirements 了解系統需求</li>
-<li>Capacity Estimation 頻寬存儲估計</li>
-<li>System APIs 系統API設計</li>
-<li>High-level System Design 系統系統設計</li>
-<li>Data Storage 數據存儲設計</li>
-<li>Scalability 優化 Scalability</li>
+<li>Steps</li>
+<li>Code</li>
+<li>Time Complexity</li>
+<li>Conclusion</li>
 </ol>
-<h2 id="Step1-Clarify-the-requirements-了解系統需求"><a href="#Step1-Clarify-the-requirements-了解系統需求" class="headerlink" title="Step1: Clarify the requirements 了解系統需求"></a>Step1: Clarify the requirements 了解系統需求</h2><ul>
-<li>Feature Requirements</li>
-<li>Traffic&#x2F;User size(e.g., Daily Active User) 服務流量的大小</li>
-</ul>
-<p>Nobody expect you design a complete system in 30-45 mins</p>
-<p>Align with interviewers on 2-3 components to focus in the interview</p>
-<h3 id="系統設計面試重點：要和面試官達成一致"><a href="#系統設計面試重點：要和面試官達成一致" class="headerlink" title="系統設計面試重點：要和面試官達成一致"></a>系統設計面試重點：要和面試官達成一致</h3><h2 id="Type-2-Non-Functional-Requirement"><a href="#Type-2-Non-Functional-Requirement" class="headerlink" title="Type 2: Non-Functional Requirement"></a>Type 2: Non-Functional Requirement</h2><p>為了保證 Availability犧牲了 Consistency<br>設計重點：系統面對比較大流量時的Scalability和Low latency</p>
-<ul>
-<li>Consistency<ul>
-<li>Every read receives the most recent write or an error</li>
-<li>Tradeoff with Availability: Eventual consistency（最终一致性）</li>
-</ul>
-</li>
-<li>Availability<ul>
-<li>Every request receives a (non-error) reponse, without the guarantee that it contains the most recent write</li>
-<li>Scalable<ul>
-<li>Performance: low latency(because it is watching video)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Partition tolerance(Fault Tolerance) 系統的容錯性<ul>
-<li>The system continues to operate despite an arbitrary number of messages being dropped(or delayed) by the network between nodes</li>
-</ul>
-</li>
-</ul>
-<h2 id="Step2-Capacity-Estimation"><a href="#Step2-Capacity-Estimation" class="headerlink" title="Step2: Capacity Estimation"></a>Step2: Capacity Estimation</h2><p>Why Capacity Estimation?</p>
-<ul>
-<li>Evaluate candiadate’s analytical skills &amp; system sense</li>
-<li>Helpful for identifying system bottlenecks in order to improve system scalability.</li>
-</ul>
-<p><img src="https://i.imgur.com/6yHnqfO.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://i.imgur.com/MYKbKk2.png" srcset="/img/loading.gif" lazyload></p>
-<p>Replication(數據的備份)：通常需要在一個數據中心內把數據備份三份<br>為了系統的可用性: 同一個文件會被分佈到不同的數據中心</p>
-<p>這就需要9倍的儲存空間</p>
-<p><img src="https://i.imgur.com/c5IpqfV.png" srcset="/img/loading.gif" lazyload></p>
-<p>DAU &#x3D; Daily active user</p>
-<h2 id="Step-3-System-APIs"><a href="#Step-3-System-APIs" class="headerlink" title="Step 3: System APIs"></a>Step 3: System APIs</h2><p><img src="https://i.imgur.com/2k2ugpd.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://i.imgur.com/u2qeGxA.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://i.imgur.com/zx336yM.png" srcset="/img/loading.gif" lazyload></p>
-<p>Offset: 影片的時間戳（TimeCode）</p>
-<p>codec: 影片的編碼格式</p>
-<p>resolution:分辨率（主要取決於頻寬的大小,用來優化觀影體驗）</p>
-<h2 id="Step-4-High-level-System-Design"><a href="#Step-4-High-level-System-Design" class="headerlink" title="Step 4: High-level System Design"></a>Step 4: High-level System Design</h2><p><img src="https://i.imgur.com/Nbm5C9K.png" srcset="/img/loading.gif" lazyload></p>
-<p>Metadata:影片的標題描述等</p>
-<p>影片本身會存到Distributed Media Storage</p>
-<p>上傳的影片需要經過轉碼處理成不同格式和分辨率的視頻 -&gt; 需要異步處理(Using Processing Queue)</p>
-<p>Video Processing Service: 將處理完的影片跟縮略圖存放到文件系統</p>
-<p>同時在metadata數據庫當中更新影片跟縮圖的存放地址</p>
-<p>For lower latency: CDN(push data to the server that is closer to user)</p>
-<p>Video distributing Service:負責將影片和圖片分發到CDN的各個節點上</p>
-<p>Completion Queue: 異步處理, 當處理完之後往這個隊列添加任務</p>
-<p><img src="https://i.imgur.com/mAuqcms.png" srcset="/img/loading.gif" lazyload></p>
-<ol>
-<li>下載影片然後把一個影片分成小片段</li>
-<li>對影片解碼再編碼（將影片變成不同的格式和分辨率）</li>
-<li>提取影片縮略圖</li>
-<li>用ML算法來做 video content understanding</li>
+<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol>
+<li>Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited.</li>
+<li>Extract a vertex from the queue and add its neighbors to the queue if that isn’t marked visited.</li>
+<li>Repeat step 2 until the queue is empty.</li>
 </ol>
-<p><img src="https://i.imgur.com/LP4lUhv.png" srcset="/img/loading.gif" lazyload></p>
-<p>一般熱門的影片會從CDN上stream給用戶<br>冷門的視頻則由原Data Center stream to user</p>
-<h2 id="Scenario-2"><a href="#Scenario-2" class="headerlink" title="Scenario 2"></a>Scenario 2</h2><p><img src="https://i.imgur.com/iDGdoNP.png" srcset="/img/loading.gif" lazyload></p>
-<p>Video Playback Service: 主要用來負責影片播放</p>
-<p>Host Identify Service: 用來對影片的地址進行查找也就是說給定一個video給定一個user的IP地址,然後給定用戶的設備信息,查找離這個用戶最近的並且儲存有這個影片的CDN的位置</p>
-<p>如果找到了就把位置回傳給用戶,用戶就可以觀看影片了, 沒有找到就從Data center找影片給用戶觀看</p>
-<p>Metadata&#x2F;User:從數據庫直接讀取影片的標題描述等</p>
-<h2 id="Step-5-Data-Storage"><a href="#Step-5-Data-Storage" class="headerlink" title="Step 5: Data Storage"></a>Step 5: Data Storage</h2><p>PK &#x3D; primary key</p>
-<p><img src="https://i.imgur.com/k8KQ0vp.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://i.imgur.com/4SO73cJ.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="Step-6-Scalability"><a href="#Step-6-Scalability" class="headerlink" title="Step 6: Scalability"></a>Step 6: Scalability</h2><p><img src="https://i.imgur.com/dULCFRN.png" srcset="/img/loading.gif" lazyload></p>
-<p>找出系統瓶頸,然後提出解決方案和優缺點分析</p>
-<p><img src="https://i.imgur.com/bZ2vUyu.png" srcset="/img/loading.gif" lazyload></p>
-<p>解決方案：把數據進行多份拷貝分發到不同的機器上,這樣多台機器就能serve不同的requests</p>
-<p><img src="https://i.imgur.com/aDegcGf.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://i.imgur.com/RUupduh.png" srcset="/img/loading.gif" lazyload><br>常見的方法：使用primary-secondary</p>
-<p>Pros:</p>
-<ul>
-<li>Availability:隨時都可以讀數據而不用被寫操作影響</li>
-</ul>
-<p>Cons:</p>
-<ul>
-<li>用戶不一定能讀到最新的數據（對用戶沒有多大影響）</li>
-</ul>
-<h2 id="Optimization-3-Caching"><a href="#Optimization-3-Caching" class="headerlink" title="Optimization 3: Caching"></a>Optimization 3: Caching</h2><p><img src="https://i.imgur.com/AHZpjio.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="Netfilx-Example-Put-Cache-in-ISP"><a href="#Netfilx-Example-Put-Cache-in-ISP" class="headerlink" title="Netfilx-Example(Put Cache in ISP)"></a>Netfilx-Example(Put Cache in ISP)</h2><p><img src="https://i.imgur.com/rmKp5Ki.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p><img src="https://i.imgur.com/202Ecg5.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/c/HuaHuaLeetCode/videos">花花醬 YouTube</a></p>
+<h4 id="Add-the-vertex-to-start-the-breadth-first-search-to-the-empty-queue-Mark-that-vertex-visited-從A開始"><a href="#Add-the-vertex-to-start-the-breadth-first-search-to-the-empty-queue-Mark-that-vertex-visited-從A開始" class="headerlink" title="Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited.(從A開始)"></a>Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited.(從A開始)</h4><p><img src="https://imgur.com/6xAY9FT.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="Extract-a-vertex-from-the-queue-and-add-its-neighbors-to-the-queue-if-that-isn’t-marked-visited"><a href="#Extract-a-vertex-from-the-queue-and-add-its-neighbors-to-the-queue-if-that-isn’t-marked-visited" class="headerlink" title="Extract a vertex from the queue and add its neighbors to the queue if that isn’t marked visited."></a>Extract a vertex from the queue and add its neighbors to the queue if that isn’t marked visited.</h4><p><img src="https://imgur.com/bAZPV8V.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="We-mark-the-vertices-B-and-C-as-visited-because-we-added-these-to-the-queue"><a href="#We-mark-the-vertices-B-and-C-as-visited-because-we-added-these-to-the-queue" class="headerlink" title="We mark the vertices, B and C as visited because we added these to the queue."></a>We mark the vertices, B and C as visited because we added these to the queue.</h4><p><img src="https://imgur.com/AjHasA5.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://imgur.com/7qwO4cC.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="Then-we-mark-vertices-D-and-E-visited-because-we-added-these-to-the-queue"><a href="#Then-we-mark-vertices-D-and-E-visited-because-we-added-these-to-the-queue" class="headerlink" title="Then we mark vertices D and E visited because we added these to the queue."></a>Then we mark vertices D and E visited because we added these to the queue.</h4><p><img src="https://imgur.com/VepENhs.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="We-extract-vertex-C-from-the-queue-However-we-don’t-have-any-vertex-added-to-the-queue-because-we’ve-already-visited-all-neighbors-of-vertex-C"><a href="#We-extract-vertex-C-from-the-queue-However-we-don’t-have-any-vertex-added-to-the-queue-because-we’ve-already-visited-all-neighbors-of-vertex-C" class="headerlink" title="We extract vertex C from the queue. However, we don’t have any vertex added to the queue because we’ve already visited all neighbors of vertex C."></a>We extract vertex C from the queue. However, we don’t have any vertex added to the queue because we’ve already visited all neighbors of vertex C.</h4><p><img src="https://imgur.com/0QcY0wt.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="We-are-going-to-extract-vertices-D-and-E-but-we’ve-also-visited-these-neighbors-before-So-the-queue-is-empty-and-we-finish-to-search-Finally-we’ve-visited-all-reachable-vertices-from-vertex-A-In-other-words-we’ve-marked-all-vertices-visited"><a href="#We-are-going-to-extract-vertices-D-and-E-but-we’ve-also-visited-these-neighbors-before-So-the-queue-is-empty-and-we-finish-to-search-Finally-we’ve-visited-all-reachable-vertices-from-vertex-A-In-other-words-we’ve-marked-all-vertices-visited" class="headerlink" title="We are going to extract vertices D and E, but we’ve also visited these neighbors before. So the queue is empty and we finish to search. Finally, we’ve visited all reachable vertices from vertex A. In other words, we’ve marked all vertices visited."></a>We are going to extract vertices D and E, but we’ve also visited these neighbors before. So the queue is empty and we finish to search. Finally, we’ve visited all reachable vertices from vertex A. In other words, we’ve marked all vertices visited.</h4><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque	<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">bfs</span>(<span class="hljs-params">graph, vertex</span>):<br>    queue = deque([vertex])<br>    <br>    <span class="hljs-comment"># The level holds distances from the vertex from which we start searching</span><br>    <br>    level = &#123;vertex: <span class="hljs-number">0</span>&#125;<br>     <span class="hljs-comment"># The parent holds the vertex just added as a key </span><br>     <span class="hljs-comment"># and the vertex from which we reach to the vertex just added as a value</span><br>    <br>    parent = &#123;vertex: <span class="hljs-literal">None</span>&#125;<br>    <span class="hljs-keyword">while</span> queue:<br>        v = queue.popleft()<br>        <span class="hljs-comment"># graph[v] returns neighbors of vertex v</span><br>        <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> graph[v]:<br>            <span class="hljs-keyword">if</span> n <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> level:            <br>                queue.append(n)<br>        <br>                <span class="hljs-comment"># we need to increment the i after the for-loop finishes </span><br>                <span class="hljs-comment"># because we need to expand the circle to search</span><br>                <br>                level[n] = level[v] + <span class="hljs-number">1</span><br>                parent[n] = v<br>    <span class="hljs-keyword">return</span> level, parent<br><br><span class="hljs-comment"># Input</span><br>graph = &#123;<br>    <span class="hljs-string">&#x27;A&#x27;</span>: [<span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>],<br>    <span class="hljs-string">&#x27;B&#x27;</span>: [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-string">&#x27;E&#x27;</span>],<br>    <span class="hljs-string">&#x27;C&#x27;</span>: [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>],<br>    <span class="hljs-string">&#x27;D&#x27;</span>: [<span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-string">&#x27;E&#x27;</span>],<br>    <span class="hljs-string">&#x27;E&#x27;</span>: [<span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>]<br>&#125;<br><br><span class="hljs-built_in">print</span>(bfs(graph,<span class="hljs-string">&#x27;A&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nsis">(&#123;<span class="hljs-string">&#x27;A&#x27;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;B&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;C&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;D&#x27;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;E&#x27;</span>: <span class="hljs-number">2</span>&#125; <span class="hljs-comment"># level</span><br>&#123;<span class="hljs-string">&#x27;A&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;B&#x27;</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;E&#x27;</span>: <span class="hljs-string">&#x27;B&#x27;</span>&#125;) <span class="hljs-comment"># parent</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ol>
+<li><p>The level holds distances from the vertex from which we start searching.</p>
+</li>
+<li><p>The distance from the vertex to itself is 0, of course, we initialize the level above.</p>
+</li>
+<li><p>The parent holds the vertex just added as a key and the vertex from which we reach to the vertex just added as a value.</p>
+</li>
+</ol>
+<h2 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h2><h4 id="O-V-E"><a href="#O-V-E" class="headerlink" title="O(|V|+|E|)"></a>O(|V|+|E|)</h4><p>vertices: v &#x3D; queue.popleft()<br>E is the set of the edges</p>
 
                 
               </div>
@@ -389,7 +311,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/system-design/">#system design</a>
+        <a href="/tags/Algorithm/">#Algorithm</a>
       
     </div>
   
@@ -401,8 +323,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>System Design - YouTube</div>
-      <div>https://bominc0624.dev/2023/04/09/system-design-youtube/</div>
+      <div>Breadth-First Search (using Python)</div>
+      <div>https://bominc0624.dev/2023/07/09/Breadth-First-Search/</div>
     </div>
     <div class="license-meta">
       
@@ -414,7 +336,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>2023年4月9日</div>
+          <div>2023年7月9日</div>
         </div>
       
       
@@ -446,15 +368,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/09/Breadth-First-Search/" title="Breadth-First Search (using Python)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Breadth-First Search (using Python)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/04/09/system-design-youtube/" title="System Design - YouTube">
+                        <span class="hidden-mobile">System Design - YouTube</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -471,8 +393,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://bominc0624.dev/2023/04/09/system-design-youtube/';
-          this.page.identifier = '/2023/04/09/system-design-youtube/';
+          this.page.url = 'https://bominc0624.dev/2023/07/09/Breadth-First-Search/';
+          this.page.identifier = '/2023/07/09/Breadth-First-Search/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
