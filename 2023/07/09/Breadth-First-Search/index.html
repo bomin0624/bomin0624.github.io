@@ -16,12 +16,12 @@
   <meta name="author" content="Bomin Chuang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Overview Steps Code Time Complexity Conclusion  Steps Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited. Extract a vertex from the queue and add its neighbo">
+    <meta name="description" content="Overview Steps Code Time Complexity Conclusion Reference  Steps Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited. Extract a vertex from the queue and add i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Breadth-First Search (using Python)">
 <meta property="og:url" content="https://bominc0624.dev/2023/07/09/Breadth-First-Search/index.html">
 <meta property="og:site_name" content="Bomin&#39;s blog">
-<meta property="og:description" content="Overview Steps Code Time Complexity Conclusion  Steps Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited. Extract a vertex from the queue and add its neighbo">
+<meta property="og:description" content="Overview Steps Code Time Complexity Conclusion Reference  Steps Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited. Extract a vertex from the queue and add i">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://imgur.com/6xAY9FT.jpg">
 <meta property="og:image" content="https://imgur.com/bAZPV8V.jpg">
@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://imgur.com/VepENhs.jpg">
 <meta property="og:image" content="https://imgur.com/0QcY0wt.jpg">
 <meta property="article:published_time" content="2023-07-08T20:23:53.000Z">
-<meta property="article:modified_time" content="2023-07-08T20:37:22.634Z">
+<meta property="article:modified_time" content="2023-07-10T22:05:40.041Z">
 <meta property="article:author" content="Bomin Chuang">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
@@ -215,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k words
+          2.4k words
         
       </span>
     
@@ -226,7 +226,7 @@
         
         
         
-          20 mins
+          21 mins
         
       </span>
     
@@ -274,6 +274,7 @@
 <li>Code</li>
 <li>Time Complexity</li>
 <li>Conclusion</li>
+<li>Reference</li>
 </ol>
 <h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol>
 <li>Add the vertex to start the breadth-first search to the empty queue. Mark that vertex visited.</li>
@@ -290,6 +291,7 @@
 
 <h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nsis">(&#123;<span class="hljs-string">&#x27;A&#x27;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;B&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;C&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;D&#x27;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;E&#x27;</span>: <span class="hljs-number">2</span>&#125; <span class="hljs-comment"># level</span><br>&#123;<span class="hljs-string">&#x27;A&#x27;</span>: <span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;B&#x27;</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;E&#x27;</span>: <span class="hljs-string">&#x27;B&#x27;</span>&#125;) <span class="hljs-comment"># parent</span><br></code></pre></td></tr></table></figure>
 
+<h2 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h2><h4 id="O-V-E"><a href="#O-V-E" class="headerlink" title="O(|V|+|E|)"></a>O(|V|+|E|)</h4><p>vertices: v &#x3D; queue.popleft()<br>E is the set of the edges</p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ol>
 <li><p>The level holds distances from the vertex from which we start searching.</p>
 </li>
@@ -298,7 +300,10 @@
 <li><p>The parent holds the vertex just added as a key and the vertex from which we reach to the vertex just added as a value.</p>
 </li>
 </ol>
-<h2 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h2><h4 id="O-V-E"><a href="#O-V-E" class="headerlink" title="O(|V|+|E|)"></a>O(|V|+|E|)</h4><p>vertices: v &#x3D; queue.popleft()<br>E is the set of the edges</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://shorturl.at/abzCZ">Understanding the Breadth-First Search with Python</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/s-CYnVz-uh4">MIT OpenCourseWare 6.006 Lecture 13: Breadth-First Search</a></li>
+</ol>
 
                 
               </div>
