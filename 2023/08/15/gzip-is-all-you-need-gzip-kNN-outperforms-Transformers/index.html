@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://imgur.com/cNpRPnS.jpg">
 <meta property="og:image" content="https://imgur.com/jb96Ion.jpg">
 <meta property="article:published_time" content="2023-08-15T10:40:29.000Z">
-<meta property="article:modified_time" content="2023-08-15T11:06:05.352Z">
+<meta property="article:modified_time" content="2023-08-15T11:29:32.513Z">
 <meta property="article:author" content="Bomin Chuang">
 <meta property="article:tag" content="Natural Language Processing">
 <meta name="twitter:card" content="summary_large_image">
@@ -303,7 +303,7 @@
 <p>$x_1$ &#x3D; Japan’s Seiko Epson Corp. has developed a l2-gram flying microbot.<br>$x_2$ &#x3D; The latest tiny flying robot has been unveiled in Japan.<br>$x_3$ &#x3D; Michael Phelps won the gold medal in the individual medley.</p>
 <p><img src="https://imgur.com/uz4edvt.jpg" srcset="/img/loading.gif" lazyload></p>
 <p>由於柯氏複雜性 (Kolmogorov complexity) 的不可計算性導致了 $E(x,y)$ 不可計算，因而 Li et al. 在 2004 年的論文《The similarity metric》中提出信息距離的歸一化和可計算版本，即（Normalized Compression Distance, NCD），它利用壓縮長度 $C(x)$ 來近似柯氏複雜性 $K(x)$。定義如下：</p>
-<p>$$NCD(x, y) &#x3D; \frac{C(xy) - \min{C(x), C(y)}}{\max{C(x), C(y)}}$$</p>
+<p>$$ NCD(x, y) &#x3D; \frac{C(xy) - \min\{C(x), C(y)\}}{\max\{C(x), C(y)\}} $$</p>
 <p>$x$和$y$是需要比較的兩個檔案的byte大小，$C$指壓縮，$C(xy)$就是將$xy$放進一個壓縮包中，$C(x)$就是單獨壓縮$x$以後壓縮包的byte大小，$C(y)$就是單獨壓縮y以後壓縮包的byte大小。 NCD的原理就是如果兩個二進制檔案非常相似，那麽它們被共同壓縮以後，重疊的部分就會很多，這樣壓縮以後的檔案的byte大小就會越小，假如是兩個完全相同的二進制檔案，那麽它們被壓縮以後的體積應該和單獨壓縮一個這個檔案的體積一樣大。也就是：</p>
 <p>$$Idempotency: C(xx) &#x3D; C(x) $$</p>
 <p>由於主要實驗結果使用 $gzip$ 作為壓縮器，所以這里的 $C(x)$ 表示 $x$ 經過 $gzip$ 壓縮後的長度。<br>$C(xy)$ 是連接 $x$ 和 $y$ 的壓縮長度。有了 NCD 提供的距離矩陣，就可以使用 $k$NN 來進行分類。</p>
