@@ -16,12 +16,12 @@
   <meta name="author" content="Bomin Chuang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Overview Clarify the requirements 了解系統需求 Capacity Estimation 頻寬存儲估計 System APIs 系統API設計 High-level System Design 系統系統設計 Data Storage 數據存儲設計 Scalability 優化 Scalability  Step1: Clarify the requirements">
+    <meta name="description" content="Overview Clarify the requirements 了解系統需求 Capacity Estimation 頻寬存儲估計 System APIs 系統API設計 High-level System Design 系統系統設計 Data Storage 數據存儲設計 Scalability 優化  Step1: Clarify the requirements 了解系統需求 Featu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="System Design - YouTube">
 <meta property="og:url" content="https://bominc0624.dev/2023/04/09/system-design-youtube/index.html">
 <meta property="og:site_name" content="Bomin&#39;s blog">
-<meta property="og:description" content="Overview Clarify the requirements 了解系統需求 Capacity Estimation 頻寬存儲估計 System APIs 系統API設計 High-level System Design 系統系統設計 Data Storage 數據存儲設計 Scalability 優化 Scalability  Step1: Clarify the requirements">
+<meta property="og:description" content="Overview Clarify the requirements 了解系統需求 Capacity Estimation 頻寬存儲估計 System APIs 系統API設計 High-level System Design 系統系統設計 Data Storage 數據存儲設計 Scalability 優化  Step1: Clarify the requirements 了解系統需求 Featu">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/6yHnqfO.png">
 <meta property="og:image" content="https://i.imgur.com/MYKbKk2.png">
@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://i.imgur.com/rmKp5Ki.png">
 <meta property="og:image" content="https://i.imgur.com/202Ecg5.png">
 <meta property="article:published_time" content="2023-04-09T14:12:14.000Z">
-<meta property="article:modified_time" content="2023-04-09T14:16:23.213Z">
+<meta property="article:modified_time" content="2024-09-28T23:22:11.501Z">
 <meta property="article:author" content="Bomin Chuang">
 <meta property="article:tag" content="system design">
 <meta name="twitter:card" content="summary_large_image">
@@ -288,7 +288,7 @@
 <li>System APIs 系統API設計</li>
 <li>High-level System Design 系統系統設計</li>
 <li>Data Storage 數據存儲設計</li>
-<li>Scalability 優化 Scalability</li>
+<li>Scalability 優化</li>
 </ol>
 <h2 id="Step1-Clarify-the-requirements-了解系統需求"><a href="#Step1-Clarify-the-requirements-了解系統需求" class="headerlink" title="Step1: Clarify the requirements 了解系統需求"></a>Step1: Clarify the requirements 了解系統需求</h2><ul>
 <li>Feature Requirements</li>
@@ -311,7 +311,7 @@
 </li>
 </ul>
 </li>
-<li>Partition tolerance(Fault Tolerance) 系統的容錯性<ul>
+<li>Partition tolerance (Fault Tolerance) 系統的容錯性<ul>
 <li>The system continues to operate despite an arbitrary number of messages being dropped(or delayed) by the network between nodes</li>
 </ul>
 </li>
@@ -330,7 +330,7 @@
 <h2 id="Step-3-System-APIs"><a href="#Step-3-System-APIs" class="headerlink" title="Step 3: System APIs"></a>Step 3: System APIs</h2><p><img src="https://i.imgur.com/2k2ugpd.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="https://i.imgur.com/u2qeGxA.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="https://i.imgur.com/zx336yM.png" srcset="/img/loading.gif" lazyload></p>
-<p>Offset: 影片的時間戳（TimeCode）</p>
+<p>Offset: 影片的TimeCode</p>
 <p>codec: 影片的編碼格式</p>
 <p>resolution:分辨率（主要取決於頻寬的大小,用來優化觀影體驗）</p>
 <h2 id="Step-4-High-level-System-Design"><a href="#Step-4-High-level-System-Design" class="headerlink" title="Step 4: High-level System Design"></a>Step 4: High-level System Design</h2><p><img src="https://i.imgur.com/Nbm5C9K.png" srcset="/img/loading.gif" lazyload></p>
@@ -339,7 +339,7 @@
 <p>上傳的影片需要經過轉碼處理成不同格式和分辨率的視頻 -&gt; 需要異步處理(Using Processing Queue)</p>
 <p>Video Processing Service: 將處理完的影片跟縮略圖存放到文件系統</p>
 <p>同時在metadata數據庫當中更新影片跟縮圖的存放地址</p>
-<p>For lower latency: CDN(push data to the server that is closer to user)</p>
+<p>For lower latency: CDN (push data to the server that is closer to user)</p>
 <p>Video distributing Service:負責將影片和圖片分發到CDN的各個節點上</p>
 <p>Completion Queue: 異步處理, 當處理完之後往這個隊列添加任務</p>
 <p><img src="https://i.imgur.com/mAuqcms.png" srcset="/img/loading.gif" lazyload></p>
