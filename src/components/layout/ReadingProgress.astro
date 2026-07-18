@@ -1,0 +1,36 @@
+<div
+    class="reading-progress"
+    data-reading-progress
+    role="progressbar"
+    aria-label="Reading progress"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="0"
+>
+    <div class="reading-progress-bar" data-reading-progress-bar></div>
+</div>
+
+<script>
+    const initialiseReadingProgress = () => {
+        const progress = document.querySelector<HTMLElement>("[data-reading-progress]");
+        const bar = progress?.querySelector<HTMLElement>("[data-reading-progress-bar]");
+
+        if (!progress || !bar || progress.dataset.initialised === "true") return;
+        progress.dataset.initialised = "true";
+
+        const updateProgress = () => {
+            const maximum = document.documentElement.scrollHeight - window.innerHeight;
+            const value = maximum > 0 ? Math.min(100, (window.scrollY / maximum) * 100) : 0;
+            bar.style.transform = `scaleX(${value / 100})`;
+            progress.setAttribute("aria-valuenow", Math.round(value).toString());
+        };
+
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        window.addEventListener("resize", updateProgress);
+        document.addEventListener("astro:page-load", updateProgress);
+        updateProgress();
+    };
+
+    document.addEventListener("astro:page-load", initialiseReadingProgress);
+    initialiseReadingProgress();
+</script>

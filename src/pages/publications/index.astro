@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseItemCard from "../../components/ui/BaseItemCard.astro";
+import { PAGES } from "../../config";
+import { getListingItem } from "../../utils/adapters";
+
+if (PAGES.publications.isActive === false) {
+    return Astro.redirect("/404");
+}
+
+const publications = await getCollection("publications");
+const categories = ["International Conferences", "Domestic Conferences"] as const;
+const domesticPublicationIds = new Set([
+    "dualcse",
+    "explicit-implicit-embeddings-yans2025",
+]);
+
+const entriesForCategory = (category: (typeof categories)[number]) => {
+    const isDomestic = (entry: (typeof publications)[number]) =>
+        entry.data.category === "Domestic Conferences" || domesticPublicationIds.has(entry.id);
+
+    return publications
+        .filter((entry) =>
+            category === "Domestic Conferences" ? isDomestic(entry) : !isDomestic(entry),
+        )
+        .sort((a, b) => {
+            const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
+            const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
+            return dateB - dateA;
+        });
+};
+---
+
+<BaseLayout title={PAGES.publications.title}>
+    <header class="page-header">
+        <h1 class="page-title">{PAGES.publications.title}</h1>
+        {PAGES.publications.subtitle && <p class="page-subtitle">{PAGES.publications.subtitle}</p>}
+    </header>
+
+    {categories.map((category) => {
+        const entries = entriesForCategory(category);
+        return (
+            <section class="section">
+                <h2 class="section-title">{category}</h2>
+                <div class="item-list">
+                    {entries.map((entry) => {
+                        const item = getListingItem(entry);
+                        return <BaseItemCard {...item} href={`/publications/${entry.id}`} />;
+                    })}
+                </div>
+            </section>
+        );
+    })}
+</BaseLayout>
